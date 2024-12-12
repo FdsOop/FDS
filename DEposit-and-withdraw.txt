@@ -1,25 +1,28 @@
-def deposite(n):
+def deposit(num):
     global balance
-    balance=balance+n
+    balance=(balance+num)
 
-def withdrawal(n):
+def withdraw(num):
     global balance
-    if(balance>n):
-        balance=balance-n
+    if(balance>=num):
+       balance=(balance-num)
+    else:
+       print("Insufficient Balance")
+
 list=[]
 balance=0
 while True:
-    data=input("enter a transction details:\n")
-    if 'exit'==data:
+    data=input("Enter Transaction Details: ")
+    if(data=="Exit"): 
         break
+
     list.append(data.split())
 print(list)
-
 for var in list:
-    if(var[0]== 'D'):
-        deposite(int(var[1]))
-    elif(var[0]== 'W'):
-        withdrawal(int(var[1]))
-    
-print("balance is:",balance)
+    if(var[0]=="D"):
+         deposit(float(var[1]))
+    elif(var[0]=="W"): 
+         withdraw(float(var[1]))
+
+print("Total Balance is ",balance)
 
